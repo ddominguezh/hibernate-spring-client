@@ -30,6 +30,12 @@
 		</dependency>
 		
 		<dependency>
+			<groupId>com.ddominguezh</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		
+		<dependency>
 		    <groupId>com.ddominguezh</groupId>
 		    <artifactId>hibernate-core</artifactId>
 		    <version>0.0.1-SNAPSHOT</version>
@@ -63,5 +69,13 @@
 	    	<url>packagecloud+https://packagecloud.io/ddominguezh/libs</url>
 	  	</snapshotRepository>
 	</distributionManagement-->
+	
+	<distributionManagement>
+	   	<repository>
+	     	<id>hibernate-spring-client</id>
+	     	<name>GitHub OWNER Apache Maven Packages</name>
+	     	<url>https://maven.pkg.github.com/ddominguezh/hibernate-spring-client</url>
+	   	</repository>
+	</distributionManagement>
 	
 </project>

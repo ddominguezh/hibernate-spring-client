@@ -22,11 +22,10 @@ public class HibernateConfiguration {
     private final Parameter config;
     private final String contextName;
 
-    public HibernateConfiguration(HibernateConfigurationFactory factory, Parameter config) throws ParameterNotExist {
+    public HibernateConfiguration(HibernateConfigurationFactory factory) throws ParameterNotExist {
         this.factory = factory;
-        this.config  = config;
-        this.config.load("hibernate.properties");
-        this.contextName = this.config.get("BACKOFFICE_CONTEXT_NAME");
+        this.config  = new Parameter();
+        this.contextName = this.config.get("backoffice.package.name");
     }
 
     @Bean("transaction_manager")
@@ -42,11 +41,11 @@ public class HibernateConfiguration {
     @Bean("data_source")
     public DataSource dataSource() throws IOException, ParameterNotExist {
         return factory.dataSource(
-        	config.get("BACKOFFICE_DATABASE_DRIVER"),
-        	config.get("BACKOFFICE_DATABASE_URL"),
-            config.get("BACKOFFICE_DATABASE_NAME"),
-            config.get("BACKOFFICE_DATABASE_USER"),
-            config.get("BACKOFFICE_DATABASE_PASSWORD")
+    		this.config.get("spring.datasource.driver"),
+    		this.config.get("spring.datasource.url"),
+    		this.config.get("spring.datasource.name"),
+    		this.config.get("spring.datasource.user"),
+    		this.config.get("spring.datasource.password")
         );
     }
     
